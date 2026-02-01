@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currencies">
+        <item>USDC</item>
+        <item>USDT</item>
+        <item>DAI</item>
+        <item>PYUSD</item>
+        <item>TUSD</item>
+    </string-array>
+</resources>

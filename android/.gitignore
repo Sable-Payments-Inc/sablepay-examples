@@ -1,0 +1,23 @@
+﻿# Built files
+*.apk
+*.aab
+*.dex
+*.class
+build/
+bin/
+gen/
+out/
+
+# Gradle
+.gradle/
+
+# Local config - NEVER COMMIT
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

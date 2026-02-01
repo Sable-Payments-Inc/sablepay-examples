@@ -1,0 +1,20 @@
+﻿# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Dependencies
+node_modules/
+.pub-cache/
+
+# Build outputs
+build/
+dist/
+*.apk
+*.aab
+*.ipa

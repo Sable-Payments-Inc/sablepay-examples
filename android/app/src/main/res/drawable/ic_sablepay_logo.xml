@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SablePay Logo placeholder - replace with actual sablePayLogo.png -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Background circle -->
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="M24,24m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+    
+    <!-- S letter for SablePay -->
+    <path
+        android:pathData="M28.5,18.5c0,-2.5 -2,-4.5 -4.5,-4.5s-4.5,2 -4.5,4.5c0,2.5 2,4.5 4.5,4.5h0c2.5,0 4.5,2 4.5,4.5s-2,4.5 -4.5,4.5s-4.5,-2 -4.5,-4.5"
+        android:strokeWidth="3"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    
+</vector>

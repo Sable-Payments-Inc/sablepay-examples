@@ -1,0 +1,55 @@
+﻿name: Build Examples
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  android:
+    name: Build Android Example
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Create local.properties
+      working-directory: android
+      run: |
+        echo "sablepay.apiKey=" >> local.properties
+        echo "sablepay.merchantId=" >> local.properties
+        echo "sablepay.baseUrl=https://sandbox.api.sablepay.com/api/v1/" >> local.properties
+
+    - name: Build Android
+      working-directory: android
+      run: |
+        chmod +x gradlew
+        ./gradlew assembleDebug
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-debug-apk
+        path: android/app/build/outputs/apk/debug/app-debug.apk
+
+  # web:
+  #   name: Build Web Example
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     # Add web build steps when ready
+
+  # flutter:
+  #   name: Build Flutter Example
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     # Add Flutter build steps when ready

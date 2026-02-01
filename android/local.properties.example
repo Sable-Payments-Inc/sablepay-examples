@@ -1,0 +1,11 @@
+﻿# SablePay Android SDK Configuration
+# ===================================
+# 
+# 1. Copy this file to local.properties
+# 2. Replace with your credentials from https://dashboard.sablepay.com
+#
+# IMPORTANT: Never commit local.properties to version control!
+
+sablepay.apiKey=sable_sk_sand_YOUR_API_KEY_HERE
+sablepay.merchantId=YOUR_MERCHANT_UUID_HERE
+sablepay.baseUrl=https://sandbox.api.sablepay.com/api/v1/
