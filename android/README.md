@@ -12,21 +12,21 @@ This example demonstrates integrating the SablePay Android SDK for stablecoin pa
 
 ### 1. Configure Credentials
 
-`ash
+```bash
 cp local.properties.example local.properties
-`
+```
 
 Edit `local.properties`:
-`properties
+```properties
 sablepay.apiKey=sable_sk_sand_YOUR_API_KEY
 sablepay.merchantId=00000000-0000-0000-0000-000000000000
-`
+```
 
 ### 2. Build & Run
 
-`ash
+```bash
 ./gradlew installDebug
-`
+```
 
 Or open in Android Studio and click **Run**.
 
@@ -34,10 +34,10 @@ Or open in Android Studio and click **Run**.
 
 Add to your `app/build.gradle.kts`:
 
-`kotlin
+```kotlin
 dependencies {
     implementation("io.sablepay:sdk:1.0.0")
 }
-`
+```
 
 See the [main README](../README.md) for full integration guide.

@@ -8,9 +8,9 @@ Integration examples for SablePay SDKs across multiple platforms.
 
 | Platform | Status | Directory | Documentation |
 |----------|--------|-----------|---------------|
-| **Android** | âœ… Available | [/android](./android) | [Android Guide](./android/README.md) |
-| **Web** | ðŸ”œ Coming Soon | [/web](./web) | - |
-| **Flutter** | ðŸ”œ Coming Soon | [/flutter](./flutter) | - |
+| **Android** | ✅ Available | [/android](./android) | [Android Guide](./android/README.md) |
+| **Web** | 📜 Coming Soon | [/web](./web) | - |
+| **Flutter** | 📜 Coming Soon | [/flutter](./flutter) | - |
 
 ---
 
@@ -18,12 +18,12 @@ Integration examples for SablePay SDKs across multiple platforms.
 
 ### Android
 
-`ash
+```bash
 cd android
 cp local.properties.example local.properties
 # Edit local.properties with your credentials
 ./gradlew installDebug
-`
+```
 
 ### Get Your Credentials
 
@@ -39,38 +39,38 @@ cp local.properties.example local.properties
 ### Step 1: Add SDK Dependency
 
 **Android (Kotlin):**
-`kotlin
+```kotlin
 dependencies {
     implementation("io.sablepay:sdk:1.0.0")
 }
-`
+```
 
 **Web (npm):** *(Coming Soon)*
-`ash
+```bash
 npm install @sablepay/sdk
-`
+```
 
 **Flutter (pub.dev):** *(Coming Soon)*
-`yaml
+```yaml
 dependencies:
   sablepay_flutter: ^1.0.0
-`
+```
 
 ### Step 2: Initialize SDK
 
 **Android:**
-`kotlin
+```kotlin
 SablePay.initialize(
     context = applicationContext,
     apiKey = "sable_sk_sand_...",
     merchantId = "your-merchant-uuid"
 )
-`
+```
 
 ### Step 3: Create Payment
 
 **Android:**
-`kotlin
+```kotlin
 val request = CreatePaymentRequest(
     amount = 1050,        // $10.50 in cents
     currency = "USDC",
@@ -83,12 +83,12 @@ SablePay.getInstance().createPayment(request)
         val qr = SablePay.getInstance().generateQrCode(response.linkToken!!)
         imageView.setImageBitmap(qr)
     }
-`
+```
 
 ### Step 4: Handle Payment Status
 
 **Android:**
-`kotlin
+```kotlin
 SablePay.createPaymentPoller()
     .pollStatus(paymentId, intervalMs = 3000)
     .collect { result ->
@@ -99,7 +99,7 @@ SablePay.createPaymentPoller()
             }
         }
     }
-`
+```
 
 ---
 
@@ -115,20 +115,20 @@ SablePay.createPaymentPoller()
 
 ## Repository Structure
 
-`
+```
 sablepay-examples/
-â”œâ”€â”€ android/                 # Android SDK example
-â”‚   â”œâ”€â”€ app/                 # Example app source
-â”‚   â”œâ”€â”€ gradle/              # Gradle wrapper
-â”‚   â””â”€â”€ README.md            # Android-specific guide
-â”œâ”€â”€ web/                     # Web SDK example (coming soon)
-â”œâ”€â”€ flutter/                 # Flutter SDK example (coming soon)
-â”œâ”€â”€ docs/                    # Shared documentation
-â”‚   â”œâ”€â”€ API.md
-â”‚   â”œâ”€â”€ SECURITY.md
-â”‚   â””â”€â”€ VENDOR_INTEGRATION_GUIDE.md
-â””â”€â”€ README.md                # This file
-`
+├── android/                 # Android SDK example
+│   ├── app/                 # Example app source
+│   ├── gradle/              # Gradle wrapper
+│   └── README.md            # Android-specific guide
+├── web/                     # Web SDK example (coming soon)
+├── flutter/                 # Flutter SDK example (coming soon)
+├── docs/                    # Shared documentation
+│   ├── API.md
+│   ├── SECURITY.md
+│   └── VENDOR_INTEGRATION_GUIDE.md
+└── README.md                # This file
+```
 
 ---
 
@@ -142,4 +142,4 @@ sablepay-examples/
 
 ## License
 
-Copyright Â© 2026 SablePay. See [LICENSE](LICENSE) for details.
+Copyright © 2026 SablePay. See [LICENSE](LICENSE) for details.
