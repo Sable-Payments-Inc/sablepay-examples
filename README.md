@@ -25,9 +25,25 @@ cp local.properties.example local.properties
 ./gradlew installDebug
 ```
 
+### Web (Next.js)
+
+```bash
+cd web
+npm install
+# Create .env.local with your credentials (see below)
+npm run dev
+```
+
+Create `web/.env.local`:
+```env
+PUBLIC_SABLEPAY_API_KEY=sable_sk_sand_YOUR_API_KEY
+PUBLIC_SABLEPAY_MERCHANT_ID=00000000-0000-0000-0000-000000000000
+PUBLIC_SABLEPAY_BASE_URL=https://sandbox-api.sablepay.io
+```
+
 ### Get Your Credentials
 
-1. Sign up at [SablePay Dashboard](https://dashboard.sablepay.com)
+1. Sign up at [SablePay Dashboard](https://dashboard.sablepay.io)
 2. Navigate to **API Keys**
 3. Generate a sandbox API key
 4. Copy your Merchant ID
@@ -45,9 +61,9 @@ dependencies {
 }
 ```
 
-**Web (npm):** *(Coming Soon)*
+**Web (npm):**
 ```bash
-npm install @sablepay/sdk
+npm install @sablepay/react-sablepay-js
 ```
 
 **Flutter (pub.dev):** *(Coming Soon)*
@@ -65,6 +81,17 @@ SablePay.initialize(
     apiKey = "sable_sk_sand_...",
     merchantId = "your-merchant-uuid"
 )
+```
+
+**Web (React / Next.js):**
+```tsx
+import { SablePay } from '@sablepay/react-sablepay-js';
+
+SablePay.initialize({
+  apiKey: 'sable_sk_sand_...',
+  merchantId: 'your-merchant-uuid',
+  baseUrl: 'https://sandbox-api.sablepay.io',
+});
 ```
 
 ### Step 3: Create Payment
@@ -85,6 +112,23 @@ SablePay.getInstance().createPayment(request)
     }
 ```
 
+**Web:**
+```tsx
+import { SablePay, CreatePaymentRequest, QrCodeGenerator } from '@sablepay/react-sablepay-js';
+
+const request: CreatePaymentRequest = {
+  amount: 5,
+  items: [{ name: 'Espresso', quantity: 1, amount: 5 }],
+  metadata: { source: 'my-app' },
+};
+
+const response = await SablePay.getInstance().createPayment(request);
+
+// Generate a QR code
+const qrGen = new QrCodeGenerator();
+const dataUrl = await qrGen.generatePaymentQr(response, { width: 280 });
+```
+
 ### Step 4: Handle Payment Status
 
 **Android:**
@@ -99,6 +143,17 @@ SablePay.createPaymentPoller()
             }
         }
     }
+```
+
+**Web:**
+```tsx
+const status = await SablePay.getInstance().getPaymentStatus(paymentId);
+
+if (status.status === 'completed') {
+  showSuccess();
+} else if (status.status === 'failed' || status.status === 'expired') {
+  showError();
+}
 ```
 
 ---
@@ -121,7 +176,7 @@ sablepay-examples/
 │   ├── app/                 # Example app source
 │   ├── gradle/              # Gradle wrapper
 │   └── README.md            # Android-specific guide
-├── web/                     # Web SDK example (coming soon)
+├── web/                     # Web SDK example (Next.js + React)
 ├── flutter/                 # Flutter SDK example (coming soon)
 ├── docs/                    # Shared documentation
 │   ├── API.md
@@ -134,8 +189,8 @@ sablepay-examples/
 
 ## Support
 
-- **Email:** sdk-support@sablepay.com
-- **Documentation:** https://docs.sablepay.com
+- **Email:** sdk-support@sablepay.io
+- **Documentation:** https://docs.sablepay.io
 - **Issues:** [GitHub Issues](https://github.com/AshishPal04/sablepay-examples/issues)
 
 ---
