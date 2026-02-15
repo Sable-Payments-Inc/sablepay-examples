@@ -1,0 +1,10 @@
+{
+  "/api/proxy": {
+    "target": "https://sandbox-api.sablepay.io/api/v1",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/proxy": ""
+    }
+  }
+}

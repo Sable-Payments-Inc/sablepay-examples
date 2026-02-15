@@ -1,4 +1,4 @@
-﻿# SablePay Web SDK Example
+﻿# SablePay React (Next.js) SDK Example
 
 This example demonstrates integrating the SablePay React SDK (`@sablepay/react-sablepay-js`) in a Next.js application for stablecoin payments.
 
@@ -13,13 +13,13 @@ This example demonstrates integrating the SablePay React SDK (`@sablepay/react-s
 ### 1. Install Dependencies
 
 ```bash
-cd web
+cd web/react
 npm install
 ```
 
 ### 2. Configure Credentials
 
-Create a `.env.local` file in the `web/` directory:
+Create a `.env.local` file in the `web/react/` directory:
 
 ```env
 PUBLIC_SABLEPAY_API_KEY=sable_sk_sand_YOUR_API_KEY
@@ -89,7 +89,7 @@ const status = await SablePay.getInstance().getPaymentStatus(paymentId);
 ## Project Structure
 
 ```
-web/
+web/react/
 ├── public/                         # Static assets
 ├── src/
 │   ├── app/
@@ -122,4 +122,4 @@ The example uses Next.js rewrites to proxy API requests through the same origin,
 
 ## More Information
 
-See the [main README](../README.md) for the full integration guide and links to other platform examples.
+See the [main README](../../README.md) for the full integration guide and links to other platform examples.

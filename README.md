@@ -9,7 +9,8 @@ Integration examples for SablePay SDKs across multiple platforms.
 | Platform | Status | Directory | Documentation |
 |----------|--------|-----------|---------------|
 | **Android** | ✅ Available | [/android](./android) | [Android Guide](./android/README.md) |
-| **Web** | ✅ Available | [/web](./web) | [Web Guide](./web/README.md) |
+| **Web (React)** | ✅ Available | [/web/react](./web/react) | [React Guide](./web/react/README.md) |
+| **Web (Angular)** | ✅ Available | [/web/angular](./web/angular) | [Angular Guide](./web/angular/README.md) |
 | **Flutter** | 📜 Coming Soon | [/flutter](./flutter) | - |
 
 ---
@@ -25,20 +26,29 @@ cp local.properties.example local.properties
 ./gradlew installDebug
 ```
 
-### Web (React.js)
+### Web (React / Next.js)
 
 ```bash
-cd web
+cd web/react
 npm install
 # Create .env.local with your credentials (see below)
 npm run dev
 ```
 
-Create `web/.env.local`:
+Create `web/react/.env.local`:
 ```env
 PUBLIC_SABLEPAY_API_KEY=sable_sk_sand_YOUR_API_KEY
 PUBLIC_SABLEPAY_MERCHANT_ID=00000000-0000-0000-0000-000000000000
 PUBLIC_SABLEPAY_BASE_URL=https://sandbox-api.sablepay.io
+```
+
+### Web (Angular)
+
+```bash
+cd web/angular
+npm install
+# Edit src/environments/environment.ts with your credentials
+npm start
 ```
 
 ### Get Your Credentials
@@ -61,9 +71,14 @@ dependencies {
 }
 ```
 
-**Web (npm):**
+**Web (npm - React):**
 ```bash
 npm install @sablepay/react-sablepay-js
+```
+
+**Web (npm - Angular):**
+```bash
+npm install @sablepay/angular-sablepay-js
 ```
 
 **Flutter (pub.dev):** *(Coming Soon)*
@@ -91,6 +106,17 @@ SablePay.initialize({
   apiKey: 'sable_sk_sand_...',
   merchantId: 'your-merchant-uuid',
   baseUrl: 'https://sandbox-api.sablepay.io',
+});
+```
+
+**Web (Angular):**
+```typescript
+import { SablePay } from '@sablepay/angular-sablepay-js';
+
+SablePay.initialize({
+  apiKey: 'sable_sk_sand_...',
+  merchantId: 'your-merchant-uuid',
+  baseUrl: 'https://sandbox-api.sablepay.io/api/v1/',
 });
 ```
 
@@ -176,7 +202,9 @@ sablepay-examples/
 │   ├── app/                 # Example app source
 │   ├── gradle/              # Gradle wrapper
 │   └── README.md            # Android-specific guide
-├── web/                     # Web SDK example (Next.js + React)
+├── web/
+│   ├── react/               # React (Next.js) SDK example
+│   └── angular/             # Angular SDK example
 ├── flutter/                 # Flutter SDK example (coming soon)
 ├── docs/                    # Shared documentation
 │   ├── API.md
