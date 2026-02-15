@@ -43,7 +43,7 @@ PUBLIC_SABLEPAY_BASE_URL=https://sandbox-api.sablepay.io
 
 ### Get Your Credentials
 
-1. Sign up at [SablePay Dashboard](https://dashboard.sablepay.io)
+1. Sign up at [SablePay Dashboard](https://sablepay.io/dashboard)
 2. Navigate to **API Keys**
 3. Generate a sandbox API key
 4. Copy your Merchant ID
