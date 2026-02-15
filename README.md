@@ -9,7 +9,7 @@ Integration examples for SablePay SDKs across multiple platforms.
 | Platform | Status | Directory | Documentation |
 |----------|--------|-----------|---------------|
 | **Android** | ✅ Available | [/android](./android) | [Android Guide](./android/README.md) |
-| **Web** | 📜 Coming Soon | [/web](./web) | - |
+| **Web** | ✅ Available | [/web](./web) | [Web Guide](./web/README.md) |
 | **Flutter** | 📜 Coming Soon | [/flutter](./flutter) | - |
 
 ---
