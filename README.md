@@ -25,7 +25,7 @@ cp local.properties.example local.properties
 ./gradlew installDebug
 ```
 
-### Web (Next.js)
+### Web (React.js)
 
 ```bash
 cd web
