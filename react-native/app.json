@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "SablePay React Native Example",
+    "slug": "sablepay-react-native-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "sablepay-example",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "android": {
+      "package": "com.sablepay.reactnativeexample",
+      "adaptiveIcon": {
+        "backgroundColor": "#1a1a2e"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.sablepay.reactnativeexample"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
