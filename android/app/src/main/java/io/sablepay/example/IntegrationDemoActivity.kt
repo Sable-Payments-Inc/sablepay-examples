@@ -11,13 +11,12 @@ import io.sablepay.sdk.handlePaymentResult
 import io.sablepay.sdk.launchPayment
 
 /**
- * Simple SablePay Integration Demo.
+ * SablePay Integration Example.
  *
- * This demonstrates the simplest way to integrate SablePay:
- * 1. Call SablePay.launchPayment() with amount and merchant name
- * 2. Handle the result in onActivityResult()
- *
- * That's it! Just 2 steps.
+ * Demonstrates the simplest way to accept payments:
+ * 1. Enter an amount
+ * 2. Call SablePay.launchPayment() — SDK handles QR, polling, and result screens
+ * 3. Handle the result in onActivityResult()
  */
 class IntegrationDemoActivity : AppCompatActivity() {
 
@@ -33,10 +32,6 @@ class IntegrationDemoActivity : AppCompatActivity() {
 
     private fun setupUI() {
         binding.apply {
-            // Set default amount
-            editTextAmount.setText("10.00")
-
-            // Pay button - simple one-liner!
             buttonPay.setOnClickListener {
                 val amountText = editTextAmount.text.toString()
                 val amount = amountText.toDoubleOrNull()
@@ -46,8 +41,7 @@ class IntegrationDemoActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                // === THE SIMPLE INTEGRATION ===
-                // Just one line to launch a payment!
+                // Launch the SDK payment screen — one line!
                 SablePay.launchPayment(
                     activity = this@IntegrationDemoActivity,
                     amount = amount
@@ -60,10 +54,8 @@ class IntegrationDemoActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // === HANDLE THE RESULT ===
         SablePay.handlePaymentResult(requestCode, resultCode, data) { result ->
             result.onSuccess { payment: PaymentResult ->
-                // Payment successful!
                 Toast.makeText(
                     this,
                     "Payment Complete!\n" +
@@ -71,9 +63,11 @@ class IntegrationDemoActivity : AppCompatActivity() {
                         "Amount: ${payment.formattedAmount}",
                     Toast.LENGTH_LONG
                 ).show()
+
+                // Clear the amount field for next payment
+                binding.editTextAmount.text?.clear()
             }
             result.onFailure { error ->
-                // Payment failed or cancelled
                 Toast.makeText(
                     this,
                     "Payment Failed: ${error.message}",
