@@ -67,7 +67,7 @@ npm start
 **Android (Kotlin):**
 ```kotlin
 dependencies {
-    implementation("io.sablepay:sdk:1.0.0")
+    implementation("io.sablepay:sdk:1.0.2")
 }
 ```
 
@@ -94,7 +94,8 @@ dependencies:
 SablePay.initialize(
     context = applicationContext,
     apiKey = "sable_sk_sand_...",
-    merchantId = "your-merchant-uuid"
+    merchantId = "your-merchant-uuid",
+    baseUrl = "https://sandbox-api.sablepay.io/api/v1/"
 )
 ```
 
