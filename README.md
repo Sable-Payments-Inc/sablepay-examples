@@ -67,7 +67,7 @@ npm start
 **Android (Kotlin):**
 ```kotlin
 dependencies {
-    implementation("io.sablepay:sdk:1.0.2")
+    implementation("io.sablepay:sdk:1.0.3")
 }
 ```
 

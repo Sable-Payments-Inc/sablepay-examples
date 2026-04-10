@@ -17,7 +17,7 @@ In your `app/build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("io.sablepay:sdk:1.0.2")
+    implementation("io.sablepay:sdk:1.0.3")
 }
 ```
 

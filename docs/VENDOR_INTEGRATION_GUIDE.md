@@ -25,7 +25,7 @@ Add to your app's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.sablepay:sdk:1.0.2")
+    implementation("com.sablepay:sdk:1.0.3")
 }
 ```
 
@@ -57,7 +57,7 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.github.sablepay:sablepay-android-sdk:1.0.2")
+    implementation("com.github.sablepay:sablepay-android-sdk:1.0.3")
 }
 ```
 
@@ -570,7 +570,7 @@ Contact SablePay support (ashish@sablepay.io) for:
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0.2 | 2026-04-10 | Simplified payment flow with launchPayment/handlePaymentResult, built-in QR code & countdown UI |
+| 1.0.3 | 2026-04-10 | Simplified payment flow with launchPayment/handlePaymentResult, built-in QR code & countdown UI |
 | 1.0.0 | 2026-01-15 | Initial release |
 
 ---
