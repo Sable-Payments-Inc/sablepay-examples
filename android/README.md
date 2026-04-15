@@ -9,80 +9,79 @@ This example demonstrates integrating the SablePay Android SDK for accepting sta
 - Kotlin 1.9+
 - SablePay merchant account
 
-## Quick Start
+## Add Dependency
 
-### 1. Add Dependency
-
-In your `app/build.gradle.kts`:
+Add to your `app/build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("io.sablepay:sdk:1.0.3")
+    implementation("io.sablepay:sdk:1.0.5")
 }
 ```
 
-### 2. Configure Credentials
-
-```bash
-cp local.properties.example local.properties
-```
-
-Edit `local.properties` with your credentials from the [SablePay Dashboard](https://dashboard.sablepay.com):
-
-```properties
-sablepay.apiKey=sable_sk_sand_YOUR_API_KEY
-sablepay.merchantId=YOUR_MERCHANT_UUID
-sablepay.baseUrl=https://sandbox-api.sablepay.io/api/v1/
-```
-
-### 3. Build & Run
-
-```bash
-./gradlew installDebug
-```
-
-Or open in Android Studio and click **Run**.
-
-## How It Works
-
-The SDK handles the entire payment flow — just call two methods:
-
-**Step 1: Initialize (once in Application class)**
+## Initialize SDK
 
 ```kotlin
-SablePay.initialize(
-    context = this,
-    apiKey = "sable_sk_sand_YOUR_API_KEY",
-    merchantId = "your-merchant-uuid",
-    baseUrl = "https://sandbox-api.sablepay.io/api/v1/"
-)
+import io.sablepay.sdk.SablePay
+
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+
+        SablePay.initialize(
+            context = this,
+            apiKey = "sable_sk_live_YOUR_API_KEY_HERE",
+            merchantId = "your-merchant-uuid-here",
+            baseUrl = "https://sandbox-api.sablepay.io/api/v1/",
+            enableLogging = BuildConfig.DEBUG
+        )
+    }
+}
 ```
 
-**Step 2: Launch Payment**
+## Collect Payment
+
+Launch a full payment screen with QR code, countdown timer, and auto-polling — all in one line:
 
 ```kotlin
-SablePay.launchPayment(this, 10.50)  // amount in USD
+import io.sablepay.sdk.SablePay
+import io.sablepay.sdk.launchPayment
+
+// Launch payment screen (one line!)
+SablePay.launchPayment(this, 10.50)  // amount
 ```
 
-**Step 3: Handle Result**
+## Handle Payment Result
+
+The SDK handles QR display, status polling, and success/failure screens automatically. Handle the result in your Activity:
 
 ```kotlin
+import io.sablepay.sdk.handlePaymentResult
+
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
     SablePay.handlePaymentResult(requestCode, resultCode, data) { result ->
         result.onSuccess { payment ->
+            // Payment successful!
             println("Payment ID: ${payment.paymentId}")
-            println("Amount: ${payment.formattedAmount}")
+            println("TX Hash: ${payment.transactionHash}")
             println("Paid: ${payment.formattedPaidAmount}")
         }
         result.onFailure { error ->
+            // Payment failed or cancelled
             println("Error: ${error.message}")
         }
     }
 }
 ```
 
-The SDK displays a full payment screen with QR code, countdown timer, and auto-polling. When the customer pays, it closes automatically and returns the result.
+## Cleanup
+
+When the merchant logs out or switches accounts:
+
+```kotlin
+SablePay.release()  // Clears stored credentials
+```
 
 ## Environments
 
